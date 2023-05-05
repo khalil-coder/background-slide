@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Background Slide</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+   <style>  
+       body{
+         background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(30,30,10,0.4));     
+      transition-duration:2s;}
+      
+       #container{
+       position:absolute;
+       inset:0;
+       display: grid;
+       place-content: center; }
+       
+       #rounded-container{ 
+       width:5em; 
+       height:1.1em;            
+         position: relative;
+       background: #ddd;
+       border: none;      
+       border-radius:20px;
+      font-size:1.2em;
+      color:#4077ff;
+      transition-duration:2s;  }
+      
+       #inner-button{  
+       border-radius: 50%;  
+       position:absolute;
+       top:-1.7px;  
+       left:1px; }         
+   </style>
+</head>
+<body>
+    
+  
+<div id="container">
+    <button id="rounded-container">
+        <span id="inner-button" class="bi-twitter" onclick="setStyle()">                 
+        </span>
+    </button>
+</div>
+
+
+<script> 
+    const inner = document. getElementById("inner-button")  
+    const roundCont= document.getElementById("rounded-container")
+    const randNum=[20,10,40,12,18,22,60,56,120,350,360,170, 120,99,45,69,50] 
+      const img= [ 
+      "172-1727798_alberta-canada-moraine-lake.jpg",
+   "pexels-pixabay-147411.jpg",
+  "snowy-mountain.jpg",
+   "sunny-mountain.jpg", 
+   "boat-on-lake.jpg",
+   "red-mountain.jpg",
+   "dc826acf47bbb9f317292650a88ab972.jpg"
+   
+]
+    function setStyle()  {  
+    const {style}= document.body
+        
+    const math = Math.round(Math.random() * (randNum.length-1)) 
+    
+     
+       const randImg = Math.round(Math.random() * (img.length-1)) 
+    
+                     
+        inner.classList.toggle("class")
+        if(inner.classList=="bi-twitter class" || inner.classList=="bi-facebook class"){  
+          
+       inner.style.right="0"
+       inner.style.left="77%"
+                
+    inner.classList.remove("bi-twitter")
+   inner.classList.add("bi-facebook")
+  inner.style.transform=`rotate(${randNum[math]}rad)`
+      style.background=`linear-gradient(45deg,rgba(0,0,0,0.5), rgba(30,30,10,0.6)), url(img/${img[randImg]})`
+  roundCont.style.background="black"            
+    }
+    
+    else{
+   inner.classList.remove("bi-facebook")
+       inner.style.left="1px" 
+       inner.style.right="79%" 
+       inner.classList.add("bi-twitter")
+       inner.style.transform=`rotate(${randNum[math]}rad)`
+      roundCont.style.background="white" 
+          style.background=`linear-gradient(45deg, rgba(0,0,0,0.3), rgba(30,30,10,0.3)), url(img/${img[randImg]})`
+    }
+    inner.style.transition='1s  ease-out'
+ style.backgroundSize="cover" 
+ style.backgroundPosition="center center"
+ style.backgroundAttachment="fixed"
+ style.backgroundRepeat="no-repeat"
+ style.transitionDuration= "2s"
+
+
+
+    }
+  
+   
+    
+</script>
+
+  
+</body>
+</html>
